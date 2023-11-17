@@ -1,12 +1,10 @@
 import pymysql
-import datetime as DT
-import pandas as pd
 from kivymd.app import MDApp
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
-from kivy.uix.label import Label
+
 from kivy.uix.screenmanager import ScreenManager, Screen
-#from kivymd.uix.screen import Screen
+
 from pymysql.cursors import DictCursor
 from kivymd.uix.datatables import MDDataTable
 from kivy.metrics import dp
@@ -129,9 +127,7 @@ class MainApp(MDApp):
                                background_color=(0.5, 0.5, 0.5, 0.5))
 
 
-        #row_details_screen.ids.name_label.text = row_data[0]
-        #row_details_screen.ids.age_label.text += str(row_data[1])
-        #row_details_screen.ids.country_label.text += row_data[2]
+
         row_details_screen.add_widget(main_layout)
 
         main_layout.add_widget(button_material_category_name)
@@ -156,28 +152,6 @@ class MainApp(MDApp):
         print(instance_table, current_row)
 
 if __name__ == '__main__':
-
-
-    connection = pymysql.connect(
-        host = "194.44.39.209",
-        user="viewer2",
-        password="~viewer2",
-        port = 3306,
-        db="tmp_db3",
-        cursorclass=DictCursor,
-        charset="utf8"
-    )
-    cursor = connection.cursor()
-    cursor.execute("SELECT * FROM zakaz_materials")
-    #cursor.execute("SELECT spr_1_units.unit_shotname, zakaz_materials.id_unit, zakaz_materials.remark, zakaz_materials.xCount, zakaz_materials.user_name, spr_1_materials_categories.material_category_name FROM zakaz_materials INNER JOIN spr_1_units ON zakaz_materials.id_unit=spr_1_units.id_unit INNER JOIN spr_1_materials_categories ON zakaz_materials.id_material_category=spr_1_materials_categories.id_material_category")
-    #cursor.execute("SELECT spr_1_units.unit_shotname FROM zakaz_materials INNER JOIN spr_1_units ON zakaz_materials.id_unit=spr_1_units.id_unit )
-    #cursor.execute("SELECT spr_1_materials_categories.material_category_name FROM zakaz_materials INNER JOIN spr_1_materials_categories ON zakaz_materials.id_material_category=spr_1_materials_categories.id_material_category WHERE zakaz_materials.status=3")
-    name=cursor.fetchall()
-    print(name)
-    #"SELECT zakaz_materials.id_unit, zakaz_materials.remark, zakaz_materials.xCount, zakaz_materials.user_name, spr_1_materials_categories.material_category_name FROM zakaz_materials INNER JOIN spr_1_materials_categories ON zakaz_materials.id_material_category=spr_1_materials_categories.id_material_category
-
-
-    #row in cursor.fetchall():
 
 
 
